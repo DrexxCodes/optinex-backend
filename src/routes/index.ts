@@ -1,0 +1,42 @@
+import type { FastifyPluginAsync } from 'fastify';
+import auth from '@/modules/auth/routes';
+import profile from '@/modules/profile/routes';
+import avatar from '@/modules/avatar/routes';
+import popup from '@/modules/popup/routes';
+import notifications from '@/modules/notifications/routes';
+import utils from '@/modules/utils/routes';
+import casino from '@/modules/casino/routes';
+import investment from '@/modules/investment/routes';
+import loans from '@/modules/loans/routes';
+import referral from '@/modules/referral/routes';
+import streak from '@/modules/streak/routes';
+import tasks from '@/modules/tasks/routes';
+import upgrade from '@/modules/upgrade/routes';
+import wallet from '@/modules/wallet/routes';
+import withdrawal from '@/modules/withdrawal/routes';
+import uploads from '@/modules/uploads/routes';
+import cron from '@/modules/cron/routes';
+import admin from '@/modules/admin';
+
+// URL layout is identical to the old Next.js route handlers, so the frontends' fetch paths don't change.
+const routes: FastifyPluginAsync = async (app) => {
+  await app.register(auth, { prefix: '/api/auth' });
+  await app.register(profile, { prefix: '/api/user' });
+  await app.register(avatar, { prefix: '/api/avatar' });
+  await app.register(popup, { prefix: '/api/popup' });
+  await app.register(notifications, { prefix: '/api/notifications' });
+  await app.register(utils, { prefix: '/api/utils' });
+  await app.register(casino, { prefix: '/api/casino' });
+  await app.register(investment, { prefix: '/api/investment' });
+  await app.register(loans, { prefix: '/api/loans' });
+  await app.register(referral, { prefix: '/api/referral' });
+  await app.register(streak, { prefix: '/api/streak' });
+  await app.register(tasks, { prefix: '/api/tasks' });
+  await app.register(upgrade, { prefix: '/api/upgrade' });
+  await app.register(wallet, { prefix: '/api/wallet' });
+  await app.register(withdrawal, { prefix: '/api/withdrawal' });
+  await app.register(cron, { prefix: '/api/cron' });
+  await app.register(uploads);
+  await app.register(admin, { prefix: '/api/admin' });
+};
+export default routes;
